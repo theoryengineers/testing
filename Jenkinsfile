@@ -10,24 +10,35 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
-            steps { 
-                sh 'docker --version'         
-                sh 'yarn'
-                sh 'chmod -R 755 scripts'
+        stage('Deploy') {
+            steps {                
+                sh 'docker --version'
+                sh "docker run -d \
+                    --name site-b \
+                    --net reverse-proxy \
+                    -e 'LETSENCRYPT_EMAIL=theoryengineers@gmail.com' \
+                    -e 'LETSENCRYPT_HOST=b.theoryengineers.com' \
+                    -e 'VIRTUAL_HOST=b.theoryengineers.com' httpd"
             }
         }
-        stage('Test') {
-            steps {
-                sh './scripts/test.sh'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './scripts/kill.sh'
-            }
-        }
-    }
+    //     stage('Build') {
+    //         steps { 
+    //             sh 'docker --version'         
+    //             sh 'yarn'
+    //             sh 'chmod -R 755 scripts'
+    //         }
+    //     }
+    //     stage('Test') {
+    //         steps {
+    //             sh './scripts/test.sh'
+    //         }
+    //     }
+    //     stage('Deliver') {
+    //         steps {
+    //             sh './scripts/deliver.sh'
+    //             input message: 'Finished using the web site? (Click "Proceed" to continue)'
+    //             sh './scripts/kill.sh'
+    //         }
+    //     }
+    // }
 }
