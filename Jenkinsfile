@@ -10,7 +10,9 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {           
+            steps {
+                sh 'ls'
+                sh 'pwd'
                 sh 'yarn --version'
                 sh 'yarn index.js'
             }
