@@ -14,7 +14,7 @@ pipeline {
                 sh 'ls'
                 sh 'pwd'
                 sh 'yarn --version'
-                sh 'yarn index.js'
+                sh 'yarn'           
             }
         }
         stage('Test') {
