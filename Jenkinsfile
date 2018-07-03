@@ -13,6 +13,7 @@ pipeline {
         stage('Deploy') {
             steps {                
                 sh 'docker --version'
+                sh 'ls'
                 sh "docker run -d \
                     --name site-b \
                     --net reverse-proxy \
