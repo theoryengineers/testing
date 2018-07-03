@@ -10,17 +10,13 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                sh 'ls'
-                sh 'pwd'
-                sh 'yarn --version'            
-                sh '/scripts/test.sh'
+            steps {          
+                sh 'yarn'
             }
         }
         stage('Test') {
             steps {
-                sh "ls"
-                sh "scripts/test.sh"
+                sh './scripts/test.sh'
             }
         }
         stage('Deliver') {
