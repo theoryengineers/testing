@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "../workspace@script/scripts/test.sh"
+                sh "../workspace/scripts@script/test.sh"
             }
         }
         stage('Deliver') {
