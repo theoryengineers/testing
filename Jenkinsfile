@@ -13,15 +13,14 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'pwd'
-                sh 'yarn --version'
-                sh 'yarn helpme'
-
+                sh 'yarn --version'            
+                sh '/scripts/test.sh'
             }
         }
         stage('Test') {
             steps {
                 sh "ls"
-                sh "jenkins/scripts/test.sh"
+                sh "scripts/test.sh"
             }
         }
         stage('Deliver') {
