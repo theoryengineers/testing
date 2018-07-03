@@ -1,16 +1,18 @@
 pipeline {
-    agent {
-        docker {
-            image 'mhart/alpine-node:8'
-            args '-p 3000:3000'
-        }
-    }
+    // agent {
+    //     docker {
+    //         image 'mhart/alpine-node:8'
+    //         args '-p 3000:3000'
+    //     }
+    // }
+    agent any
     environment {
         CI = 'true'
     }
     stages {
         stage('Build') {
-            steps {          
+            steps { 
+                sh 'docker --version'         
                 sh 'yarn'
                 sh 'chmod -R 755 scripts'
             }
