@@ -14,8 +14,7 @@ pipeline {
                 sh 'ls'
                 sh 'pwd'
                 sh 'yarn --version'
-                sh 'yarn'   
-                sh 'yarn help'
+                sh 'yarn helpme'
 
             }
         }
