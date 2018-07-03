@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '${WORKSPACE}/jenkins/scripts/test.sh'
+                sh "../workspace@script/scripts/myScriptName.sh"
             }
         }
         stage('Deliver') {
