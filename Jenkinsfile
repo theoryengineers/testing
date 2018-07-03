@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:carbon-alpine'
+            image 'mhart/alpine-node:8'
             args '-p 3000:3000'
         }
     }
@@ -10,9 +10,8 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                sh 'npm install -g yarn'
-                sh 'yarn'
+            steps {           
+                sh 'yarn --version'
             }
         }
         stage('Test') {
