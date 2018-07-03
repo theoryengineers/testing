@@ -12,11 +12,11 @@ pipeline {
         stage('Build') {
             steps {          
                 sh 'yarn'
+                sh 'chmod -R 755 scripts'
             }
         }
         stage('Test') {
             steps {
-                sh 'chmod 755 scripts/script.sh'
                 sh './scripts/test.sh'
             }
         }
