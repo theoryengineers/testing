@@ -12,6 +12,7 @@ pipeline {
         stage('Build') {
             steps {           
                 sh 'yarn --version'
+                sh 'yarn index.js'
             }
         }
         stage('Test') {
